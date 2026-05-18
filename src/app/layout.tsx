@@ -4,27 +4,7 @@ import ErrorBoundary from "@/components/ErrorBoundary";
 import "./globals.css";
 import { ThemeProvider } from "@/components/ThemeProvider";
 import { ThemeToggle } from "@/components/ThemeToggle";
-
-const bebasNeue = Bebas_Neue({
-  weight: "400",
-  subsets: ["latin"],
-  variable: "--font-display",
-  display: "swap",
-});
-
-const syne = Syne({
-  subsets: ["latin"],
-  variable: "--font-heading",
-  weight: ["400", "500", "600", "700", "800"],
-  display: "swap",
-});
-
-const dmSans = DM_Sans({
-  subsets: ["latin"],
-  variable: "--font-body",
-  weight: ["300", "400", "500", "600"],
-  display: "swap",
-});
+import ScrollToTop from "@/components/ScrollToTop";
 
 export const metadata: Metadata = {
   title: "Reframe — Resize, trim, and export videos in your browser",
@@ -66,7 +46,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" suppressHydrationWarning className={`${bebasNeue.variable} ${syne.variable} ${dmSans.variable}`}>
+<html lang="en" suppressHydrationWarning>
       <head>
         <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <link rel="dns-prefetch" href="https://cdn.jsdelivr.net" />
@@ -90,7 +70,8 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-[var(--bg)] text-[var(--text)] antialiased">
-        <a href="#main-content"
+        
+      <a href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-black"
         >
           Skip to main content
@@ -101,13 +82,13 @@ export default function RootLayout({
               role="banner"
               className="sticky top-0 z-50 flex items-center justify-between px-6 py-3 border-b border-[var(--border)] bg-[var(--bg)]"
             >
-              <span className="text-lg font-semibold">Reframe</span>
+              <h1 className="text-lg font-semibold">Reframe</h1>
               <ThemeToggle />
             </header>
-            <main role="main" id="main-content" tabIndex={-1}>
+            <main id="main-content" tabIndex={-1}>
               {children}
             </main>
-            
+            <ScrollToTop />
           </ErrorBoundary>
         </ThemeProvider>
       </body>
