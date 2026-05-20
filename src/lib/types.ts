@@ -15,6 +15,7 @@ export interface EditRecipe {
   brightness: number;
   contrast: number;
   saturation: number;
+  colorFilter: "none" | "grayscale" | "sepia" | "vintage" | "cool" | "warm" | "high-contrast";
   soundOnCompletion: boolean;
 }
 
@@ -81,6 +82,7 @@ export const DEFAULT_RECIPE: EditRecipe = {
   brightness: 0,
   contrast: 0,
   saturation: 0,
+  colorFilter: "none",
   soundOnCompletion: false,
 };
 

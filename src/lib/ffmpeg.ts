@@ -125,6 +125,28 @@ function buildVideoFilter(recipe: EditRecipe, targetW: number, targetH: number):
     const pts = (1 / recipe.speed).toFixed(4);
     filters.push(`setpts=${pts}*PTS`);
   }
+
+  switch (recipe.colorFilter) {
+    case "grayscale":
+      filters.push("format=gray");
+      break;
+    case "sepia":
+      filters.push("colorchannelmixer=.393:.769:.189:0:.349:.686:.168:0:.272:.534:.131");
+      break;
+    case "vintage":
+      filters.push("curves=preset=vintage");
+      break;
+    case "cool":
+      filters.push("colorbalance=rs=-0.2:bs=0.2");
+      break;
+    case "warm":
+      filters.push("colorbalance=rs=0.2:bs=-0.2");
+      break;
+    case "high-contrast":
+      filters.push("eq=contrast=1.5");
+      break;
+  }
+
   filters.push(
     `eq=brightness=${recipe.brightness}:contrast=${recipe.contrast}:saturation=${recipe.saturation}`
   );

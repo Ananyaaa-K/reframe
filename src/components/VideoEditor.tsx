@@ -16,10 +16,11 @@ import ExportSettings from "./ExportSettings";
 import ExportOverlay from "./ExportOverlay";
 import DownloadResult from "./DownloadResult";
 import ImageOverlay from "./ImageOverlay"
+import ColorFilterControl from "./ColorFilterControl";
 import { cn } from "@/lib/utils";
 import {
   Layers, Crop, Scissors, RotateCw, Volume2,
-  SlidersHorizontal, Zap, AlertTriangle, Github
+  SlidersHorizontal, Zap, AlertTriangle, Github, Palette
 } from "lucide-react";
 import OnboardingTour from "./OnboardingTour";
 
@@ -257,6 +258,9 @@ export default function VideoEditor() {
                   </Section>
                   <Section icon={<SlidersHorizontal size={12} />} title="Export quality" delay={200}>
                     <ExportSettings recipe={recipe} duration={duration} onChange={updateRecipe} />
+                  </Section>
+                  <Section icon={<Palette size={12} />} title="Color Filters" delay={210}>
+                    <ColorFilterControl recipe={recipe} onChange={updateRecipe} />
                   </Section>
                   <Section icon={<Layers size={12} />} title="Image overlay" delay={120}>
                     <ImageOverlay
